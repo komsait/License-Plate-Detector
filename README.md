@@ -1,6 +1,6 @@
 # License Plate Detection & OCR System
 
-An advanced AI-powered license plate detection and text recognition system using YOLOv8 and EasyOCR. This project provides real-time license plate detection from video files with high accuracy and a modern dark-themed web interface.
+AI-powered license plate detection and text recognition system using YOLOv8 and EasyOCR. This project provides real-time license plate detection from video files with high accuracy and a modern dark-themed web interface.
 
 
 
@@ -77,55 +77,12 @@ Video Input → YOLOv8 Detection → License Plate Cropping → Preprocessing �
 - **Text Cleaning**: Standardizes format and removes special characters
 - **Duplicate Prevention**: Fuzzy matching to avoid repeated entries
 
-## 📁 Project Structure
 
-```
-license-plate-detection/
-├── Final/
-│   ├── app3.py              # Main Streamlit application
-│   └── best1.pt             # Trained YOLOv8 model
-├── yolo11n.pt               # YOLO11 nano model
-├── yolov8n.pt               # YOLOv8 nano model
-├── requirements.txt         # Python dependencies
-├── requirements-deploy.txt  # Deployment-specific dependencies
-└── README.md                # This file
-```
-
-## 🎮 Usage
-
-### Web Interface
 
 1. **Upload Video**: Drag and drop or select a video file (MP4, AVI, MOV)
 2. **Start Processing**: Click the process button to begin detection
 3. **View Results**: Watch real-time detection with bounding boxes and text overlays
 4. **Export Data**: Download detected license plates as CSV
-
-### Supported Video Formats
-- MP4
-- AVI
-- MOV
-- MKV
-- MPEG4
-
-### Configuration Options
-- **Detection Confidence**: Adjust YOLOv8 detection threshold (default: 0.4)
-- **OCR Confidence**: Set minimum OCR confidence level (default: 0.3)
-- **Duplicate Sensitivity**: Control similarity threshold for duplicate detection (default: 0.8)
-
-## 📊 Model Information
-
-- **Pre-trained Model**: YOLOv8 nano architecture
-- **Model Size**: ~6MB (YOLOv8 nano)
-- **Training Data**: 3,009+ license plate images
-- **License**: CC BY 4.0
-- **Source**: [Roboflow Universe](https://universe.roboflow.com/tahoon/license-plates-zm8ki-okcq6)
-
-## 🔧 Model Performance
-
-- **Detection Accuracy**: >95% on test set
-- **OCR Accuracy**: >90% for CLEAR license plates
-- **Processing Speed**: ~15-30 FPS (depending on hardware)
-- **Model Size**: ~6MB (YOLOv8 nano)
 
 
 ## Advanced Features
@@ -144,38 +101,4 @@ license-plate-detection/
 - Session-based data storage
 - Export functionality with timestamps
 - Clear data options for fresh starts
-
-## 🚨 Troubleshooting
-
-### Common Issues
-
-#### OpenCV Import Error (libGL.so.1)
-**Error**: `ImportError: libGL.so.1: cannot open shared object file`
-
-**Solution**: Use the headless version of OpenCV for cloud deployments:
-```bash
-pip uninstall opencv-python
-pip install opencv-python-headless
-```
-
-#### CUDA/GPU Issues
-**Error**: CUDA not available or GPU memory issues
-
-**Solution**: The application will automatically fall back to CPU processing. For better performance:
-- Ensure CUDA-compatible GPU is available
-- Install appropriate CUDA drivers
-- Use smaller batch sizes for processing
-
-#### Memory Issues
-**Error**: Out of memory during video processing
-
-**Solution**: 
-- Process videos in smaller chunks
-- Reduce video resolution before processing
-- Close other applications to free up RAM
-
-#### Model Loading Issues
-**Error**: Model file not found
-
-**Solution**: Ensure the `best1.pt` model file is in the `Final/` directory and accessible by the application.
 
