@@ -76,6 +76,7 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+*.ipynb
 
 # IPython
 profile_default/
@@ -183,5 +184,6 @@ logs/
 
 # Data files
 data/
+dataset/
 output/
 results/

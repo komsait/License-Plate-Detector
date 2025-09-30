@@ -18,7 +18,7 @@ An advanced AI-powered license plate detection and text recognition system using
 
 ### Installation
 
-
+#### Local Development
 1. **Install dependencies**
    ```bash
    pip install -r requirements.txt
@@ -31,6 +31,17 @@ An advanced AI-powered license plate detection and text recognition system using
 
 3. **Open your browser**
    Navigate to `http://localhost:8501`
+
+#### Cloud Deployment (Streamlit Cloud, Heroku, etc.)
+1. **Use deployment-specific requirements**
+   ```bash
+   pip install -r requirements-deploy.txt
+   ```
+
+2. **Deploy to your platform**
+   - For Streamlit Cloud: Connect your GitHub repository
+   - For Heroku: Use the deployment requirements file
+   - For other platforms: Ensure they support the headless OpenCV version
 
 ## 📋 Requirements
 
@@ -73,14 +84,10 @@ license-plate-detection/
 ├── Final/
 │   ├── app3.py              # Main Streamlit application
 │   └── best1.pt             # Trained YOLOv8 model
-├── dataset/
-│   ├── train/               # Training images (2,832 files)
-│   ├── valid/               # Validation images (122 files)
-│   ├── test/                # Test images (55 files)
-│   └── data.yaml            # Dataset configuration
 ├── yolo11n.pt               # YOLO11 nano model
 ├── yolov8n.pt               # YOLOv8 nano model
-├── licenseplate.ipynb       # Jupyter notebook for development
+├── requirements.txt         # Python dependencies
+├── requirements-deploy.txt  # Deployment-specific dependencies
 └── README.md                # This file
 ```
 
@@ -105,14 +112,13 @@ license-plate-detection/
 - **OCR Confidence**: Set minimum OCR confidence level (default: 0.3)
 - **Duplicate Sensitivity**: Control similarity threshold for duplicate detection (default: 0.8)
 
-## Dataset Information
+## 📊 Model Information
 
-- **Total Images**: 3,009 license plate images
-- **Training Set**: 2,832 images
-- **Validation Set**: 122 images
-- **Test Set**: 55 images
+- **Pre-trained Model**: YOLOv8 nano architecture
+- **Model Size**: ~6MB (YOLOv8 nano)
+- **Training Data**: 3,009+ license plate images
 - **License**: CC BY 4.0
-- **Source**: [Roboflow Universe]
+- **Source**: [Roboflow Universe](https://universe.roboflow.com/tahoon/license-plates-zm8ki-okcq6)
 
 ## 🔧 Model Performance
 
@@ -138,4 +144,38 @@ license-plate-detection/
 - Session-based data storage
 - Export functionality with timestamps
 - Clear data options for fresh starts
+
+## 🚨 Troubleshooting
+
+### Common Issues
+
+#### OpenCV Import Error (libGL.so.1)
+**Error**: `ImportError: libGL.so.1: cannot open shared object file`
+
+**Solution**: Use the headless version of OpenCV for cloud deployments:
+```bash
+pip uninstall opencv-python
+pip install opencv-python-headless
+```
+
+#### CUDA/GPU Issues
+**Error**: CUDA not available or GPU memory issues
+
+**Solution**: The application will automatically fall back to CPU processing. For better performance:
+- Ensure CUDA-compatible GPU is available
+- Install appropriate CUDA drivers
+- Use smaller batch sizes for processing
+
+#### Memory Issues
+**Error**: Out of memory during video processing
+
+**Solution**: 
+- Process videos in smaller chunks
+- Reduce video resolution before processing
+- Close other applications to free up RAM
+
+#### Model Loading Issues
+**Error**: Model file not found
+
+**Solution**: Ensure the `best1.pt` model file is in the `Final/` directory and accessible by the application.
 
