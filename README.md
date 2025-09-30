@@ -6,13 +6,11 @@ AI-powered license plate detection and text recognition system using YOLOv8 and 
 
 ##  Features
 
-- ** High Accuracy Detection**: YOLOv8 model trained on 3,000+ license plate images
+- ** Model Used**: pretrained model for license detection
 - ** Advanced OCR**: EasyOCR integration for text extraction with preprocessing
 - ** Real-time Processing**: Live video analysis with frame-by-frame detection
-- ** Modern UI**: Dark-themed Streamlit interface with responsive design
 - ** Data Export**: CSV export functionality for detected license plates
-- ** Duplicate Detection**: Smart filtering to avoid duplicate entries
-- ** Real-time Statistics**: Live tracking of detection metrics
+- ** Duplicate Detection**: filtering to avoid duplicate detections
 
 
 
