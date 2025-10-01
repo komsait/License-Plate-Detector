@@ -36,10 +36,6 @@ AI-powered license plate detection and text recognition system using YOLOv8 and 
    pip install -r requirements-deploy.txt
    ```
 
-2. **Deploy to your platform**
-   - For Streamlit Cloud: Connect your GitHub repository
-   - For Heroku: Use the deployment requirements file
-   - For other platforms: Ensure they support the headless OpenCV version
 
 ## 📋 Requirements
 
